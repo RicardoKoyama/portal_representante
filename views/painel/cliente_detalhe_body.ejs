@@ -1,0 +1,54 @@
+<h1><%= cliente.nome %></h1>
+
+<div class="card">
+  <p><b>Plano:</b> <%= cliente.plano %></p>
+  <p><b>Usuários ativos:</b> <%= totalAtivos %> / <%= cliente.limite_telefones %></p>
+  <p><b>Vagas disponíveis:</b> <%= vagasLivres %></p>
+  <p><b>Validade:</b>
+    <%= cliente.validade_teste
+      ? new Date(cliente.validade_teste).toLocaleDateString('pt-BR')
+      : 'Indeterminada' %>
+  </p>
+</div>
+
+<hr>
+
+<h2>Usuários</h2>
+
+<% if (vagasLivres > 0) { %>
+  <a class="btn" href="/clientes/<%= cliente.id %>/usuarios/novo">
+    ➕ Adicionar usuário
+  </a>
+<% } else { %>
+  <p class="alert alert-warning">
+    Limite de usuários atingido. Contate a administração.
+  </p>
+<% } %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% usuarios.forEach(u => { %>
+      <tr>
+        <td><%= u.nome %></td>
+        <td><%= u.telefone %></td>
+        <td><%= u.ativo ? 'Ativo' : 'Inativo' %></td>
+        <td>
+          <form method="post"
+                action="/clientes/<%= cliente.id %>/usuarios/<%= u.id %>/toggle">
+            <button class="btn-sm" type="submit">
+              <%= u.ativo ? 'Desativar' : 'Ativar' %>
+            </button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

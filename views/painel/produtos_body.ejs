@@ -1,0 +1,28 @@
+<h1>Tabelas de Preço</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tabela</th>
+      <th>Produtos</th>
+      <th>Última atualização</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tabelas.forEach(t => { %>
+      <tr>
+        <td>
+          <a href="/produtos/<%= t.id %>">
+            <b><%= t.codigo %></b>
+          </a>
+        </td>
+        <td><%= t.total_produtos %></td>
+        <td>
+          <%= t.ultima_atualizacao
+            ? new Date(t.ultima_atualizacao).toLocaleString('pt-BR')
+            : '—' %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

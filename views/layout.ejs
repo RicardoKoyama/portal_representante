@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portal do Representante</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <div class="logo">
+      <i class="fa-solid fa-user-tie"></i>
+      <span>Representante</span>
+    </div>
+
+    <ul class="menu">
+      <li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+      <li><a href="/clientes"><i class="fa-solid fa-users"></i> Clientes</a></li>
+      <li><a href="/produtos"><i class="fa-solid fa-boxes-stacked"></i> Produtos</a></li>
+      <li>
+        <a href="/logout" class="logout">
+          <i class="fa-solid fa-right-from-bracket"></i> Sair
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="content-box">
+      <%- include(body) %>
+    </div>
+  </div>
+
+</body>
+</html>

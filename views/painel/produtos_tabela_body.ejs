@@ -1,0 +1,37 @@
+<h1>Tabela <%= tabela.codigo %></h1>
+
+<a class="btn" href="/produtos/<%= tabela.id %>/upload">
+  ⬆️ Importar CSV
+</a>
+
+<br><br>
+
+
+<a href="/produtos">← Voltar para tabelas</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Preço m²</th>
+      <th>Preço m² Palete</th>
+      <th>Atualizado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% produtos.forEach(p => { %>
+      <tr>
+        <td><%= p.codigo_produto %></td>
+        <td>R$ <%= Number(p.preco_m2).toFixed(2) %></td>
+        <td>
+          <%= p.preco_m2_palete
+            ? 'R$ ' + Number(p.preco_m2_palete).toFixed(2)
+            : '—' %>
+        </td>
+        <td>
+          <%= new Date(p.atualizado_em).toLocaleDateString('pt-BR') %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

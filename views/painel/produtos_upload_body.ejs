@@ -1,0 +1,18 @@
+<h1>Importar CSV – Tabela <%= tabela.codigo %></h1>
+
+<p class="alert alert-warning">
+  ⚠️ Esta ação irá atualizar os preços da tabela
+  <b><%= tabela.codigo %></b>.
+</p>
+
+<form method="post" enctype="multipart/form-data">
+  <label>Arquivo CSV</label><br>
+  <input type="file" name="arquivo" accept=".csv" required><br><br>
+
+  <button class="btn" type="submit">
+    ⬆️ Importar CSV
+  </button>
+</form>
+
+<br>
+<a href="/produtos/<%= tabela.id %>">← Voltar para a tabela</a>
